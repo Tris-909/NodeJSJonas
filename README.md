@@ -58,3 +58,20 @@ Router.route('/').get(Handler);
 Router.route('/:id').get(HandlerThatUseId);
 app.use('/api/v1/smth', Router);
 ```
+
+- Connecting with MongoDB using Mongoose :
+  - First, Create a MongoDB account with a cluster that contain `links` to connect to your databases through mongoDB Compass
+  - Installing Mongoose then go to your NodeJS main files and :
+  ```
+  const mongoose = require('mongoose');
+  ...
+  mongoose.connect(process.end.DATABASES, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  }, (connection) => {
+    console.log('Connect to the databases successfully');
+  });
+  ```
+  - process.end.DATABASES prefers to environment variable : DATABASES
