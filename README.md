@@ -60,8 +60,10 @@ app.use('/api/v1/smth', Router);
 ```
 
 - Connecting with MongoDB using Mongoose :
+
   - First, Create a MongoDB account with a cluster that contain `links` to connect to your databases through mongoDB Compass
   - Installing Mongoose then go to your NodeJS main files and :
+
   ```
   const mongoose = require('mongoose');
   ...
@@ -74,4 +76,27 @@ app.use('/api/v1/smth', Router);
     console.log('Connect to the databases successfully');
   });
   ```
+
   - process.end.DATABASES prefers to environment variable : DATABASES
+
+- Create a mongoose SCHEMA (schema is something to describe how you will structure your data in a collection) :
+
+  - You can create a directory named Models and create a file that have the name of the same collection name in there. Then you can do this :
+
+  ```javascript
+  const mongoose = require('mongoose');
+  const tourSchema = new mongoose.Schame({
+    name: {
+      required,
+      type: string,
+      unique,
+    },
+    price: Number,
+  });
+  const Tour = mongoose.model('Tour', tourSchema);
+  module.exports = Tour;
+  ```
+
+  - the 'model' function of Mongoose will create a model in databases once it connected that has a name like the first parameter but have a 's' after that and the second parameter is for define your schema for that model.
+
+- Query Strings : A way to passing data through URL. QueryString starts with ?key=value&key2=value2 and so on. In the Router where you take in the request, you can access to these querystring data using req.query

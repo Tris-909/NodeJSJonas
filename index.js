@@ -1,10 +1,20 @@
 const express = require('express');
-const app = express();
+
+// Working with API info
 const morgan = require('morgan');
+
+// Working with MongoDB
 const mongoose = require('mongoose');
+
+// Using environment variables 
 const dotenv = require('dotenv');
+
+// Routers
 const tourRouter = require('./routes/tourRoutes.js');
 const userRouter = require('./routes/userRoutes.js');
+
+// Initialize the app
+const app = express();
 
 // MIDDLEWARES
 dotenv.config({ path: './config.env' });
@@ -21,7 +31,7 @@ mongoose.connect(process.env.DATABASES, {
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true
-}, (con) => {
+}, () => {
     console.log('Connected to mongoDB successfully');
 });
 
