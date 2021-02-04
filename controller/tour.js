@@ -10,7 +10,12 @@ exports.aliasTours = async (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
     try {
-        const features = new APIFeatures(Tour.find(), req.query).filter().sort().fields().paginate();
+        const features = new APIFeatures(Tour.find(), req.query)
+        .filter()
+        .sort()
+        .fields()
+        .paginate();
+        
         const allTours = await features.query;
         res.status(200).json({
             status: 'success',

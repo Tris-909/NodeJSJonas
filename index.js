@@ -25,6 +25,9 @@ app.use(express.static(`${__dirname}/public`));
 // ROUTER
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+app.all('*', (req, res) => {
+    res.status(404).send('This Page is not avaialble, please try again');
+});
 
 mongoose.connect(process.env.DATABASES, {
     useNewUrlParser: true,
@@ -36,6 +39,7 @@ mongoose.connect(process.env.DATABASES, {
 });
 
 //SERVER
-app.listen(5000, () => {
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
     console.log('SERVER IS RUNNING ON PORT ' + process.env.PORT);
 });

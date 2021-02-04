@@ -4,7 +4,8 @@
   "description": "- NodeJS from Udemy Jonas Schmedtmann. I will only document what I don't know or what I think it's important for the sake of re-reading all this valuable material.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L index.js"
+    "start": "nodemon -L index.js",
+    "debug": "ndb index.js"
   },
   "author": "TriTran",
   "license": "ISC",
