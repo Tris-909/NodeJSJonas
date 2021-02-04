@@ -12,7 +12,13 @@ exports.getAllTours = async (req, res) => {
     try {
         const features = new APIFeatures(Tour.find(), req.query).filter().sort().fields().paginate();
         const allTours = await features.query;
-        res.status(200).send(allTours);
+        res.status(200).json({
+            status: 'success',
+            length: allTours.length,
+            data: {
+                allTours
+            }
+        });
     } catch(error) {
         throw new Error('Something is wrong please try again');
     }

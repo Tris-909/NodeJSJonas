@@ -100,3 +100,15 @@ app.use('/api/v1/smth', Router);
   - the 'model' function of Mongoose will create a model in databases once it connected that has a name like the first parameter but have a 's' after that and the second parameter is for define your schema for that model.
 
 - Query Strings : A way to passing data through URL. QueryString starts with ?key=value&key2=value2 and so on. In the Router where you take in the request, you can access to these querystring data using req.query
+
+- Pre and Post middlewares : 'save' hook is something you can change based on when you want the middleware to run
+
+  ```javascript
+  tourSchema.pre('save', function (next) {
+    next();
+  });
+
+  tourSchema.post('save', function (next) {
+    next();
+  });
+  ```
